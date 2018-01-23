@@ -1,1 +1,9 @@
 ### Traditional Term Weighting Schemes For Sentiment Analysis
+Goal: To Present comprehensive investigation of different traditional term weighting schemes for Sentiment Classification.
+
+Term Weighting Schemes to be implemented are as follows:
+(1) Term frequency inverse document frequency (tfidf)
+(2) Term frequency inverse class frequency (tficf)
+(3) Term weighting based on mutual information (MI)
+(4) Term weighting based on X^2 statistic (CHI)
+
