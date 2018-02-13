@@ -4,6 +4,7 @@ import nltk
 nltk.download('stopwords')
 from nltk.corpus import stopwords
 import string
+from collections import Counter
 
 def loading_all_files(directory_path):
 	for file in listdir(directory_path):
@@ -56,12 +57,25 @@ def cleaning_and_stopword_removal(documents):
 	documents=[[token for token in document if not token in stop_words]for document in documents]
 	return documents
 
-documents=[]
+###Creating a vocabulary###
+def create_vocabulary(documents):
+	for document in documents:
+		vocabulary.update(document)
+	vocabulary_list = [word for word,frequency in vocabulary.items() if frequency >= 5]
+	return vocabulary_list
 
+
+
+###Initializing###
+documents=[]
+vocabulary=Counter()
 directory_path_for_positive_files="/Users/aimanabdullahanees/Desktop/Sentiment_Analysis/pos"
+directory_path_for_negative_files="/Users/aimanabdullahanees/Desktop/Sentiment_Analysis/neg"
 loading_all_files(directory_path_for_positive_files)
+loading_all_files(directory_path_for_negative_files)
 stemming(documents)
 documents=cleaning_and_stopword_removal(documents)
-print(len(documents[0]))
-print(documents[0])
+vocabulary_list=create_vocabulary(documents)
+print(len(documents))
+print(len(vocabulary_list))
 
